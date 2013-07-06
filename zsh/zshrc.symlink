@@ -63,3 +63,6 @@ function git_diff() {
 }
 
 alias eclipse="/Applications/eclipse/Eclipse.app/Contents/MacOS/eclipse&"
+export PATH=$HOME/.cabal/bin:$PATH
+# added by Anaconda 1.6.1 installer
+export PATH="/usr/local/anaconda/bin:$PATH"
