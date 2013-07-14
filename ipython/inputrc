@@ -1,0 +1,11 @@
+set editing-mode vi
+set keymap vi
+set convert-meta on
+
+# enable pprint module for printing
+pprint 1
+
+#xmode Plain
+#xmode Context
+xmode Verbose
+
