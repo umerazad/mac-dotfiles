@@ -66,3 +66,17 @@ alias eclipse="/Applications/eclipse/Eclipse.app/Contents/MacOS/eclipse&"
 export PATH=$HOME/.cabal/bin:$PATH
 # added by Anaconda 1.6.1 installer
 export PATH="/usr/local/anaconda/bin:$PATH"
+
+source ~/MacImprovement/bin/MacImprovementSetup.app/Contents/MacOS/setup-htjar
+
+alias adev="cd /Volumes/Unix/rhel5pdi/workplace/umerazad"
+
+export SSH_AUTH_SOCK=$HOME/.ssh_auth_sock
+alias screpin='killall ssh-agent; source ~/.ssh-agent-start'
+
+########## Begin path additions for /opt/ssh-wrapper {{{
+
+PATH="/opt/ssh-wrapper/bin:${PATH}"
+export PATH
+
+########## }}} End of path additions for /opt/ssh-wrapper
