@@ -214,9 +214,9 @@ endif
 
 " General {{{
 filetype plugin indent on
+syntax enable
 set background=dark
 colorscheme solarized
-syntax on
 
 " Set 5 lines to the cursor - when moving vertically
 set scrolloff=5
@@ -310,6 +310,10 @@ set showbreak=↪
 set notimeout
 set ttimeout
 set ttimeoutlen=10
+
+if has('gui_running')
+    set guifont="Anonymous Pro":h14
+endif
 
 " _ backups {{{
 set undodir=~/.vim/tmp/undo//     " undo files
