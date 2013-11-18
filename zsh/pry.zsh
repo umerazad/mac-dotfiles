@@ -1,0 +1,1 @@
+alias pry='nocorrect pry'
