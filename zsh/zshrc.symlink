@@ -1,4 +1,4 @@
-echo "Loading zshrc.symlink"
+# echo "Loading zshrc.symlink"
 
 set -so vi
 
@@ -35,7 +35,7 @@ fi
 autoload -U compinit
 compinit
 
-echo "Before completion"
+# echo "Before completion"
 
 # load every completion after autocomplete loads
 for file in ${(M)config_files:#*/completion.zsh}
@@ -63,7 +63,7 @@ function git_diff() {
 }
 
 alias eclipse="/Applications/eclipse/Eclipse.app/Contents/MacOS/eclipse&"
-export PATH=$HOME/.cabal/bin:$HOME/Cloud9Tools/bin:$PATH
+export PATH=$HOME/.cabal/bin:$HOME/Cloud9BrazilBuild-1.0/bin:$PATH
 # added by Anaconda 1.6.1 installer
 export PATH="/usr/local/anaconda/bin:$PATH"
 
@@ -74,9 +74,21 @@ alias adev="cd /Volumes/Unix/rhel5pdi/workplace/umerazad"
 export SSH_AUTH_SOCK=$HOME/.ssh_auth_sock
 alias screpin='killall ssh-agent; source ~/.ssh-agent-start'
 
+# brew pip path
+export PYTHONPATH=$(brew --prefix)/lib/python2.7/site-packages
+
 ########## Begin path additions for /opt/ssh-wrapper {{{
 
 PATH="/opt/ssh-wrapper/bin:${PATH}"
 export PATH
 
+export JAVA_HOME=`/usr/libexec/java_home`
+export PATH=$PATH:$JAVA_HOME\bin
+
+export HADOOP_INSTALL=/usr/local/Cellar/hadoop/1.2.1
+export PATH=$PATH:$HADOOP_INSTALL/bin
+
 ########## }}} End of path additions for /opt/ssh-wrapper
+
+### Added by the Heroku Toolbelt
+export PATH="/usr/local/heroku/bin:$PATH"

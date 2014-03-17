@@ -29,7 +29,7 @@ endif
 " Use this variable inside your local configuration to declare
 " which package you would like to include
 if ! exists('g:vimified_packages')
-    let g:vimified_packages = ['general', 'fancy', 'os', 'coding', 'ruby', 'html', 'css', 'js', 'clojure', 'haskell', 'color']
+    let g:vimified_packages = ['general', 'fancy', 'os', 'coding', 'ruby', 'html', 'css', 'js', 'clojure', 'scala', 'haskell', 'color']
 endif
 " }}}
 
@@ -185,6 +185,13 @@ if count(g:vimified_packages, 'clojure')
     Bundle 'guns/vim-clojure-static'
     Bundle 'tpope/vim-foreplay'
     Bundle 'tpope/vim-classpath'
+endif
+" }}}
+
+" _. Scala {{{
+if count(g:vimified_packages, 'scala')
+    Bundle 'derekwyatt/vim-scala'
+    au BufNewFile,BufReadPost *.scala setl shiftwidth=2 tabstop=2 softtabstop=2 expandtab
 endif
 " }}}
 
