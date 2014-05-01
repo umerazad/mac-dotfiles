@@ -1,6 +1,8 @@
 :m - Prelude
 :m + GOA
-setLambdabotHome "/Users/umerazad/Library/Haskell/ghc-7.6.3/lib/lambdabot-4.3.0.1/bin"
+:set prompt "λ: "
+setLambdabotHome "/Users/umerazad/bin"
+
 :def bs        lambdabot "botsnack"
 :def pl        lambdabot "pl"
 :def unpl      lambdabot "unpl"

@@ -31,3 +31,5 @@ alias fecore="cd /Users/umerazad/workspace/fe/src/AWSLogsCore"
 alias be="cd /Users/umerazad/workspace/be"
 alias beservice="cd /Users/umerazad/workspace/be/src/AWSLogsStagingService"
 alias becore="cd /Users/umerazad/workspace/be/src/AWSLogsCore"
+alias clidev="cd /Users/umerazad/workspace/awslogs/cli/"
+
