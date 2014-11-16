@@ -52,47 +52,18 @@ export LSCOLORS=Gxfxcxdxbxegedabagacad
 
 export PATH=$PATH:~/bin:/opt/local/bin
 
-PATH=$PATH:$HOME/.rvm/bin # Add RVM to PATH for scripting
-
-export SDETOOLS_HOST=umerazad.desktop.amazon.com
-export POST_REVIEW_HOST=umerazad.desktop.amazon.com
-
-
 function git_diff() {
     git diff --no-ext-dif -w "$@" | vim -R -
 }
 
-alias eclipse="/Applications/eclipse/Eclipse.app/Contents/MacOS/eclipse&"
-export PATH=$HOME/Cloud9BrazilBuild-1.0/bin:$PATH
-# added by Anaconda 1.6.1 installer
-export PATH="/usr/local/anaconda/bin:$PATH"
-
-source ~/MacImprovement/bin/MacImprovementSetup.app/Contents/MacOS/setup-htjar
-
-alias adev="cd /Volumes/Unix/rhel5pdi/workplace/umerazad"
-
-export SSH_AUTH_SOCK=$HOME/.ssh_auth_sock
-alias screpin='killall ssh-agent; source ~/.ssh-agent-start'
-
-# brew pip path
-export PYTHONPATH=$(brew --prefix)/lib/python2.7/site-packages
-
-########## Begin path additions for /opt/ssh-wrapper {{{
-
-PATH="/opt/ssh-wrapper/bin:${PATH}"
-export PATH
 
 export JAVA_HOME=`/usr/libexec/java_home`
 export PATH=$PATH:$JAVA_HOME\bin
 
-export HADOOP_INSTALL=/usr/local/Cellar/hadoop/1.2.1
-export PATH=$PATH:$HADOOP_INSTALL/bin
+# Docker stuff
+export DOCKER_HOST=tcp://192.168.59.103:2376
+export PATH="$HOME/Library/Haskell/bin:$PATH"
 
-########## }}} End of path additions for /opt/ssh-wrapper
-
-### Added by the Heroku Toolbelt
-export PATH="/usr/local/heroku/bin:$PATH"
-
-export PYTHONSTARTUP=~/.pythonrc
-
-export CLASSPATH=".:/usr/local/lib/antlr-4.2-complete.jar:$CLASSPATH"
+# Go
+export GOPATH=$HOME/Code/go
+export PATH=$PATH:$GOPATH/bin
