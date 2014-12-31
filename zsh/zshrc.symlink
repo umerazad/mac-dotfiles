@@ -2,6 +2,8 @@
 
 set -so vi
 
+eval "$(hub alias -s)"
+
 # shortcut to this dotfiles path is $ZSH
 export ZSH=$HOME/.dotfiles
 
@@ -66,4 +68,9 @@ export PATH="$HOME/Library/Haskell/bin:$PATH"
 
 # Go
 export GOPATH=$HOME/Code/go
-export PATH=$PATH:$GOPATH/bin
+export PATH=$PATH:$GOPATH/bin:$PATH:/usr/local/opt/go/libexec/bin
+
+# Erlang
+export MANPATH=$MANPATH:/usr/local/opt/erlang/lib/erlang/man
+
+export PATH="$PATH:$HOME/.rvm/bin" # Add RVM to PATH for scripting

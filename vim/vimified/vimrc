@@ -13,6 +13,7 @@ set rtp+=~/.vim/bundle/Vundle.vim
 call vundle#begin()
 
 Plugin 'fatih/vim-go'
+Plugin 'rizzatti/dash.vim'
 
 call vundle#end()
 filetype plugin indent on
@@ -39,13 +40,6 @@ endif
 if ! exists('g:vimified_packages')
     let g:vimified_packages = ['general', 'fancy', 'os', 'go', 'rust' 'coding', 'ruby', 'html', 'css', 'js', 'clojure', 'scala', 'haskell', 'color']
 endif
-" }}}
-
-" VUNDLE {{{
-set rtp+=~/.vim/bundle/vundle/
-call vundle#rc()
-
-Bundle 'gmarik/vundle'
 " }}}
 
 " PACKAGES {{{
@@ -159,7 +153,12 @@ endif
 "
 " _. Go {{{
 if count(g:vimified_packages, 'go')
-    Bundle 'fatih/vim-go'
+    Plugin 'fatih/vim-go'
+    Bundle 'Shougo/neocomplcache'
+    Bundle 'Shougo/neocomplete'
+    Bundle 'Shougo/neosnippet'
+    Bundle 'Shougo/neosnippet-snippets'
+
     au FileType go nmap <leader>r <Plug> (go-run)
     au FileType go nmap <leader>b <Plug> (go-build)
     au FileType go nmap <leader>t <Plug> (go-test)
@@ -172,6 +171,13 @@ if count(g:vimified_packages, 'go')
     autocmd BufNewFile,BufReadPost *.go set tw=120 ai sw=4 et filetype=go
 
     let g:neocomplete#enable_at_startup = 1
+    let g:go_fmt_autosave = 1
+    let g:go_fmt_fail_silently = 1
+    let g:go_fmt_command = "goimports"
+    let g:go_highlight_functions = 1
+    let g:go_highlight_structs = 1
+    let g:go_highlight_methods = 1
+    let g:go_snippet_engine = "neosnippet"
 
     let g:tagbar_type_go = {
         \ 'ctagstype' : 'go',
