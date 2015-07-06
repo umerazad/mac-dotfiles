@@ -67,10 +67,25 @@ export DOCKER_HOST=tcp://192.168.59.103:2376
 export PATH="$HOME/Library/Haskell/bin:$PATH"
 
 # Go
+export GOROOT=/usr/local/Cellar/go/1.4.2/libexec
 export GOPATH=$HOME/Code/go
-export PATH=$PATH:$GOPATH/bin:$PATH:/usr/local/opt/go/libexec/bin
+export PATH=$PATH:$GOPATH/bin
 
 # Erlang
 export MANPATH=$MANPATH:/usr/local/opt/erlang/lib/erlang/man
 
 export PATH="$PATH:$HOME/.rvm/bin" # Add RVM to PATH for scripting
+
+export PATH=$PATH:~/Code/bazel/output
+
+# The next line updates PATH for the Google Cloud SDK.
+source '/Users/umerazad/bin/google-cloud-sdk/google-cloud-sdk/path.zsh.inc'
+
+# The next line enables zsh completion for gcloud.
+source '/Users/umerazad/bin/google-cloud-sdk/google-cloud-sdk/completion.zsh.inc'
+
+PATH="/Users/umerazad/perl5/bin${PATH+:}${PATH}"; export PATH;
+PERL5LIB="/Users/umerazad/perl5/lib/perl5${PERL5LIB+:}${PERL5LIB}"; export PERL5LIB;
+PERL_LOCAL_LIB_ROOT="/Users/umerazad/perl5${PERL_LOCAL_LIB_ROOT+:}${PERL_LOCAL_LIB_ROOT}"; export PERL_LOCAL_LIB_ROOT;
+PERL_MB_OPT="--install_base \"/Users/umerazad/perl5\""; export PERL_MB_OPT;
+PERL_MM_OPT="INSTALL_BASE=/Users/umerazad/perl5"; export PERL_MM_OPT;
