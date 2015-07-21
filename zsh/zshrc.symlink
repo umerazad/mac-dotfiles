@@ -58,7 +58,6 @@ function git_diff() {
     git diff --no-ext-dif -w "$@" | vim -R -
 }
 
-
 export JAVA_HOME=`/usr/libexec/java_home`
 export PATH=$PATH:$JAVA_HOME\bin
 
@@ -77,12 +76,6 @@ export MANPATH=$MANPATH:/usr/local/opt/erlang/lib/erlang/man
 export PATH="$PATH:$HOME/.rvm/bin" # Add RVM to PATH for scripting
 
 export PATH=$PATH:~/Code/bazel/output
-
-# The next line updates PATH for the Google Cloud SDK.
-source '/Users/umerazad/bin/google-cloud-sdk/google-cloud-sdk/path.zsh.inc'
-
-# The next line enables zsh completion for gcloud.
-source '/Users/umerazad/bin/google-cloud-sdk/google-cloud-sdk/completion.zsh.inc'
 
 PATH="/Users/umerazad/perl5/bin${PATH+:}${PATH}"; export PATH;
 PERL5LIB="/Users/umerazad/perl5/lib/perl5${PERL5LIB+:}${PERL5LIB}"; export PERL5LIB;
