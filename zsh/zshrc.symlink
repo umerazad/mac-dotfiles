@@ -1,3 +1,4 @@
+export PATH=$(brew --prefix)/sbin:$(brew --prefix)/bin:$PATH:$HOME/bin
 # echo "Loading zshrc.symlink"
 
 set -so vi
@@ -59,7 +60,7 @@ function git_diff() {
 }
 
 export JAVA_HOME=`/usr/libexec/java_home`
-export PATH=$PATH:$JAVA_HOME\bin
+export PATH=$PATH:$JAVA_HOMEin
 
 # Docker stuff
 export DOCKER_HOST=tcp://192.168.59.103:2376
@@ -73,12 +74,30 @@ export PATH=$PATH:$GOPATH/bin
 # Erlang
 export MANPATH=$MANPATH:/usr/local/opt/erlang/lib/erlang/man
 
-export PATH="$PATH:$HOME/.rvm/bin" # Add RVM to PATH for scripting
-
-export PATH=$PATH:~/Code/bazel/output
+export MANPAGER="col -b | vim -c 'set ft=man ts=8 nomod nolist nonu' -c 'nnoremap i <nop>' -c 'nnoremap <Space> <C-f>' -c 'noremap q :quit<CR>' -"
 
 PATH="/Users/umerazad/perl5/bin${PATH+:}${PATH}"; export PATH;
 PERL5LIB="/Users/umerazad/perl5/lib/perl5${PERL5LIB+:}${PERL5LIB}"; export PERL5LIB;
 PERL_LOCAL_LIB_ROOT="/Users/umerazad/perl5${PERL_LOCAL_LIB_ROOT+:}${PERL_LOCAL_LIB_ROOT}"; export PERL_LOCAL_LIB_ROOT;
 PERL_MB_OPT="--install_base \"/Users/umerazad/perl5\""; export PERL_MB_OPT;
 PERL_MM_OPT="INSTALL_BASE=/Users/umerazad/perl5"; export PERL_MM_OPT;
+
+# added by newengsetup
+export EDITOR=vim
+export UBER_HOME="$HOME/Uber"
+export UBER_OWNER="umerazad@uber.com"
+export VAGRANT_DEFAULT_PROVIDER=aws
+[ -s "/usr/local/bin/virtualenvwrapper.sh" ] && . /usr/local/bin/virtualenvwrapper.sh
+[ -s "$HOME/.nvm/nvm.sh" ] && . $HOME/.nvm/nvm.sh
+if which rbenv > /dev/null; then eval "$(rbenv init -)"; fi
+
+cdsync () {
+    cd $(boxer sync_dir $@)
+}
+editsync () {
+    $EDITOR $(boxer sync_dir $@)
+}
+opensync () {
+    open $(boxer sync_dir $@)
+}
+alias china='ssh-agent bash --rcfile ~/.ssh/china/.bash_profile.cn'

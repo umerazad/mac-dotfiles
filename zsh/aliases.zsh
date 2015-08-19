@@ -25,5 +25,10 @@ alias sl=ls # often screw this up
 alias afind='ack-grep -il'
 
 alias reload!='. ~/.zshrc'
-alias cj='cd ~/Code/go/src/github.com/umerazad/codejudge'
-alias graphx='cd ~/Code/go/src/github.com/umerazad/graphx'
+alias u='cd $UBER_HOME/sync/umerazad0.dev.uber.com/home'
+alias p='cd ~/Code/pinocchio'
+alias dcli='cd ~/Code/dockercli'
+alias infrap='cd ~/Code/infraportal'
+alias sshu='boxer v umerazad0'
+
+alias sshb='ssh umer@freebsd'
