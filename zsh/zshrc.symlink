@@ -67,7 +67,7 @@ export DOCKER_HOST=tcp://192.168.59.103:2376
 export PATH="$HOME/Library/Haskell/bin:$PATH"
 
 # Go
-export GOROOT=/usr/local/Cellar/go/1.4.2/libexec
+export GOROOT=/usr/local/Cellar/go/1.5.1/libexec
 export GOPATH=$HOME/Code/go
 export PATH=$PATH:$GOPATH/bin
 
@@ -101,3 +101,5 @@ opensync () {
     open $(boxer sync_dir $@)
 }
 alias china='ssh-agent bash --rcfile ~/.ssh/china/.bash_profile.cn'
+
+[[ -s $(brew --prefix)/etc/profile.d/autojump.sh ]] && . $(brew --prefix)/etc/profile.d/autojump.sh
