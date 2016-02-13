@@ -15,6 +15,7 @@ call vundle#begin()
 Plugin 'fatih/vim-go'
 Plugin 'rizzatti/dash.vim'
 Plugin 'elixir-lang/vim-elixir'
+Plugin 'taglist.vim'
 
 call vundle#end()
 filetype plugin indent on
@@ -80,6 +81,12 @@ if count(g:vimified_packages, 'general')
 
     Bundle 'Spaceghost/vim-matchit'
     Bundle 'kien/ctrlp.vim'
+
+    " No max files limit
+    let g:ctrlp_max_files = 0
+    " Search from current directory instead of project root
+    let g:ctrlp_working_path_mod = 0
+
     Bundle 'vim-scripts/scratch.vim'
 
     Bundle 'troydm/easybuffer.vim'
@@ -133,7 +140,9 @@ if count(g:vimified_packages, 'coding')
     let g:syntastic_mode_map = { 'mode': 'active', 'active_filetypes': ['ruby', 'js'], 'passive_filetypes': ['html', 'css', 'slim'] }
     let g:syntastic_python_python_exec = '/usr/local/bin/python3'
 
-    " --
+    let g:syntastic_go_checkers = ['golint', 'govet', 'errcheck']
+    let g:syntastic_check_on_wq = 0
+    let g:syntastic_check_on_w = 0
 
     autocmd FileType gitcommit set tw=68 spell
     autocmd FileType gitcommit setlocal foldmethod=manual
@@ -689,6 +698,26 @@ map <Leaders>s :SyntasticToggleMode<CR>
 nmap =j :%!python -m json.tools<CR>
 " }}}
 "
+
+" OCAML Stuff {{{
+function! OCamlType()
+    let col = col('.')
+    let line = line('.')
+    let file = expand("%:p:r")
+    echo system("annot -n -type ".line." ".col." ".file.".annot")
+endfunction
+
+map <leader>t :call OCamlType()<return>
+
+" Vim needs to be built with Python scripting support, and must be
+" able to find Merlin's executable on PATH.
+if executable('ocamlmerlin') && has('python')
+    let s:ocamlmerlin = substitute(system('opam config var share'), '\n$', '', '''') . "/ocamlmerlin"
+    execute "set rtp+=".s:ocamlmerlin."/vim"
+    execute "set rtp+=".s:ocamlmerlin."/vimbufsync"
+endif
+
+" }}}
 
 " PYTHON STUFF {{{
 filetype off
