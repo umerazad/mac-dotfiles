@@ -1,23 +1,75 @@
-" vimrc
-" Author: Zaiste! <oh@zaiste.net>
-" Source: https://github.com/zaiste/vimified
-" Modified by: UmerAzad
-"
-" Have fun!
-"
-
 set nocompatible
+
+if empty(glob('~/.vim/autoload/plug.vim'))
+  silent !curl -fLo ~/.vim/autoload/plug.vim --create-dirs
+    \ https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
+  autocmd VimEnter * PlugInstall | source $MYVIMRC
+endif
+
+call plug#begin('~/.vim/plugged')
+Plug 'rizzatti/dash.vim'
+Plug 'elixir-lang/vim-elixir'
+Plug 'taglist.vim'
+Plug 'mileszs/ack.vim'
+Plug 'matthias-guenther/hammer.vim'
+Plug 'tsaleh/vim-align'
+Plug 'tpope/vim-endwise'
+Plug 'tpope/vim-repeat'
+Plug 'tpope/vim-speeddating'
+Plug 'tpope/vim-surround'
+Plug 'tpope/vim-unimpaired'
+Plug 'maxbrunsfeld/vim-yankstack'
+Plug 'tpope/vim-eunuch'
+Plug 'scrooloose/nerdtree'
+Plug 'kana/vim-textobj-user'
+Plug 'vim-scripts/YankRing.vim'
+Plug 'michaeljsmith/vim-indent-object'
+Plug 'Spaceghost/vim-matchit'
+Plug 'kien/ctrlp.vim'
+Plug 'vim-scripts/scratch.vim'
+Plug 'troydm/easybuffer.vim'
+Plug 'Lokaltog/vim-powerline'
+Plug 'zaiste/tmux.vim'
+Plug 'benmills/vimux'
+Plug 'majutsushi/tagbar'
+Plug 'gregsexton/gitv'
+Plug 'scrooloose/nerdcommenter'
+Plug 'sjl/splice.vim'
+Plug 'tpope/vim-fugitive'
+Plug 'scrooloose/syntastic'
+Plug 'vim-ruby/vim-ruby'
+Plug 'tpope/vim-rails'
+Plug 'nelstrom/vim-textobj-rubyblock'
+Plug 'ecomba/vim-ruby-refactoring'
+Plug 'fatih/vim-go'
+Plug 'AndrewRadev/splitjoin.vim'
+Plug 'Shougo/neocomplcache'
+Plug 'Shougo/neocomplete'
+Plug 'Shougo/neosnippet'
+Plug 'Shougo/neosnippet-snippets'
+Plug 'tpope/vim-haml'
+Plug 'juvenn/mustache.vim'
+Plug 'tpope/vim-markdown'
+Plug 'digitaltoad/vim-jade'
+Plug 'slim-template/vim-slim'
+Plug 'tristen/vim-sparkup'
+Plug 'wavded/vim-stylus'
+Plug 'kchmck/vim-coffee-script'
+Plug 'alfredodeza/jacinto.vim'
+Plug 'guns/vim-clojure-static'
+Plug 'tpope/vim-foreplay'
+Plug 'tpope/vim-classpath'
+Plug 'derekwyatt/vim-scala'
+Plug 'Twinside/vim-syntax-haskell-cabal'
+Plug 'lukerandall/haskellmode-vim'
+Plug 'sjl/badwolf'
+Plug 'altercation/vim-colors-solarized'
+Plug 'tomasr/molokai'
+Plug 'zaiste/Atom'
+Plug 'w0ng/vim-hybrid'
+call plug#end()
+
 filetype off
-
-set rtp+=~/.vim/bundle/Vundle.vim
-call vundle#begin()
-
-Plugin 'fatih/vim-go'
-Plugin 'rizzatti/dash.vim'
-Plugin 'elixir-lang/vim-elixir'
-Plugin 'taglist.vim'
-
-call vundle#end()
 filetype plugin indent on
 
 " Load external configuration before anything else {{{
@@ -36,74 +88,73 @@ if filereadable(s:localrc)
 endif
 " }}}
 
-" PACKAGE LIST {{{
-" Use this variable inside your local configuration to declare
-" which package you would like to include
+let mapleader = ","
+let maplocalleader = "\\"
+
 if ! exists('g:vimified_packages')
     let g:vimified_packages = ['general', 'fancy', 'os', 'go', 'rust' 'coding', 'ruby', 'html', 'css', 'js', 'clojure', 'scala', 'haskell', 'color']
 endif
-" }}}
 
 " PACKAGES {{{
 
 " _. General {{{
 if count(g:vimified_packages, 'general')
-    Bundle "mileszs/ack.vim"
+
+"    call plug#begin()
+"    Plug 'rizzatti/dash.vim'
+"    Plug 'elixir-lang/vim-elixir'
+"    Plug 'taglist.vim'
+"    Plug 'mileszs/ack.vim'
+"    Plug 'matthias-guenther/hammer.vim'
+"    Plug 'tsaleh/vim-align'
+"    Plug 'tpope/vim-endwise'
+"    Plug 'tpope/vim-repeat'
+"    Plug 'tpope/vim-speeddating'
+"    Plug 'tpope/vim-surround'
+"    Plug 'tpope/vim-unimpaired'
+"    Plug 'maxbrunsfeld/vim-yankstack'
+"    Plug 'tpope/vim-eunuch'
+"    Plug 'scrooloose/nerdtree'
+"    Plug 'kana/vim-textobj-user'
+"    Plug 'vim-scripts/YankRing.vim'
+"    Plug 'michaeljsmith/vim-indent-object'
+"    Plug 'Spaceghost/vim-matchit'
+"    Plug 'kien/ctrlp.vim'
+"    Plug 'vim-scripts/scratch.vim'
+"    Plug 'troydm/easybuffer.vim'
+"    Plug 'Lokaltog/vim-powerline'
+"    call plug#end()
+
     nnoremap <leader>a :Ack!<space>
-
-    Bundle 'matthias-guenther/hammer.vim'
     nmap <leader>p :Hammer<cr>
-
-    Bundle 'tsaleh/vim-align'
-    Bundle 'tpope/vim-endwise'
-    Bundle 'tpope/vim-repeat'
-    Bundle 'tpope/vim-speeddating'
-    Bundle 'tpope/vim-surround'
-    Bundle 'tpope/vim-unimpaired'
-    Bundle 'maxbrunsfeld/vim-yankstack'
-    Bundle 'tpope/vim-eunuch'
-
-    Bundle 'scrooloose/nerdtree'
     nmap <C-n> :NERDTreeToggle<CR>
     " Disable the scrollbars (NERDTree)
     set guioptions-=r
     set guioptions-=L
 
-    Bundle 'kana/vim-textobj-user'
-    Bundle 'vim-scripts/YankRing.vim'
     let g:yankring_replace_n_pkey = '<leader>['
     let g:yankring_replace_n_nkey = '<leader>]'
     let g:yankring_history_dir = '~/.vim/tmp/'
     nmap <leader>y :YRShow<cr>
 
-    Bundle 'michaeljsmith/vim-indent-object'
     let g:indentobject_meaningful_indentation = ["haml", "sass", "python", "yaml", "markdown"]
-
-    Bundle 'Spaceghost/vim-matchit'
-    Bundle 'kien/ctrlp.vim'
 
     " No max files limit
     let g:ctrlp_max_files = 0
     " Search from current directory instead of project root
     let g:ctrlp_working_path_mod = 0
 
-    Bundle 'vim-scripts/scratch.vim'
-
-    Bundle 'troydm/easybuffer.vim'
     nmap <leader>be :EasyBufferToggle<enter>
-endif
-" }}}
-
-" _. Fancy {{{
-if count(g:vimified_packages, 'fancy')
-    Bundle 'Lokaltog/vim-powerline'
 endif
 " }}}
 
 " _. OS {{{
 if count(g:vimified_packages, 'os')
-    Bundle 'zaiste/tmux.vim'
-    Bundle 'benmills/vimux'
+"    call plug#begin()
+"    Plug 'zaiste/tmux.vim'
+"    Plug 'benmills/vimux'
+"    call plug#end()
+
     map <Leader>rp :VimuxPromptCommand<CR>
     map <Leader>rl :VimuxRunLastCommand<CR>
 
@@ -114,27 +165,27 @@ endif
 " _. Coding {{{
 
 if count(g:vimified_packages, 'coding')
-    Bundle 'majutsushi/tagbar'
+"    call plug#begin()
+"    Plug 'majutsushi/tagbar'
+"    Plug 'gregsexton/gitv'
+"    Plug 'scrooloose/nerdcommenter'
+"    Plug 'sjl/splice.vim'
+"    Plug 'tpope/vim-fugitive'
+"    Plug 'scrooloose/syntastic'
+"    call plug#end()
+
     nmap <leader>t :TagbarToggle<CR>
     let g:tagbar_autofocus = 1
 
-    Bundle 'gregsexton/gitv'
-
-    Bundle 'scrooloose/nerdcommenter'
     nmap <leader># :call NERDComment(0, "invert")<cr>
     vmap <leader># :call NERDComment(0, "invert")<cr>
 
-    " - Bundle 'msanders/snipmate.vim'
-    Bundle 'sjl/splice.vim'
-
-    Bundle 'tpope/vim-fugitive'
     nmap <leader>g :Ggrep
     " ,f for global git serach for word under the cursor (with highlight)
     nmap <leader>f :let @/="\\<<C-R><C-W>\\>"<CR>:set hls<CR>:silent Ggrep -w "<C-R><C-W>"<CR>:ccl<CR>:cw<CR><CR>
     " same in visual mode
     :vmap <leader>f y:let @/=escape(@", '\\[]$^*.')<CR>:set hls<CR>:silent Ggrep -F "<C-R>=escape(@", '\\"#')<CR>"<CR>:ccl<CR>:cw<CR><CR>
 
-    Bundle 'scrooloose/syntastic'
     let g:syntastic_enable_signs=1
     let g:syntastic_auto_loc_list=1
     let g:syntastic_mode_map = { 'mode': 'active', 'active_filetypes': ['ruby', 'js'], 'passive_filetypes': ['html', 'css', 'slim'] }
@@ -151,10 +202,12 @@ endif
 
 " _. Ruby {{{
 if count(g:vimified_packages, 'ruby')
-    Bundle 'vim-ruby/vim-ruby'
-    Bundle 'tpope/vim-rails'
-    Bundle 'nelstrom/vim-textobj-rubyblock'
-    Bundle 'ecomba/vim-ruby-refactoring'
+"    call plug#begin()
+"    Plug 'vim-ruby/vim-ruby'
+"    Plug 'tpope/vim-rails'
+"    Plug 'nelstrom/vim-textobj-rubyblock'
+"    Plug 'ecomba/vim-ruby-refactoring'
+"    call plug#end()
 
     autocmd FileType ruby,eruby,yaml set tw=120 ai sw=2 sts=2 et
     autocmd FileType ruby,eruby,yaml setlocal foldmethod=manual
@@ -163,17 +216,33 @@ endif
 " }}}
 "
 " _. Go {{{
+
+" run :GoBuild or :GoTestCompile based on the go file
+function! s:build_go_files()
+  let l:file = expand('%')
+  if l:file =~# '^\f\+_test\.go$'
+    call go#cmd#Test(0, 1)
+  elseif l:file =~# '^\f\+\.go$'
+    call go#cmd#Build(0)
+  endif
+endfunction
+
+autocmd FileType go nmap <leader>b :<C-u>call <SID>build_go_files()<CR>
+
 if count(g:vimified_packages, 'go')
-    Plugin 'fatih/vim-go'
-    Bundle 'Shougo/neocomplcache'
-    Bundle 'Shougo/neocomplete'
-    Bundle 'Shougo/neosnippet'
-    Bundle 'Shougo/neosnippet-snippets'
+"    call plug#begin()
+"    Plug 'fatih/vim-go'
+"    Plug 'AndrewRadev/splitjoin.vim'
+"    Plug 'Shougo/neocomplcache'
+"    Plug 'Shougo/neocomplete'
+"    Plug 'Shougo/neosnippet'
+"    Plug 'Shougo/neosnippet-snippets'
+"    call plug#end()
 
     au FileType go nmap <leader>r <Plug> (go-run)
     au FileType go nmap <leader>b <Plug> (go-build)
     au FileType go nmap <leader>t <Plug> (go-test)
-    au FileType go nmap <leader>c <Plug> (go-coverage)
+    au FileType go nmap <leader>c <Plug> (go-coverage-toggle)
     au FileType go nmap gd
     au FileType go nmap <leader>i <Plug> (go-info)
     au FileType go nmap <leader>gd <Plug> (go-doc)
@@ -189,6 +258,7 @@ if count(g:vimified_packages, 'go')
     let g:go_highlight_structs = 1
     let g:go_highlight_methods = 1
     let g:go_snippet_engine = "neosnippet"
+    let g:go_test_timeout = '30s'
 
     let g:tagbar_type_go = {
         \ 'ctagstype' : 'go',
@@ -223,12 +293,14 @@ endif
 
 " _. HTML {{{
 if count(g:vimified_packages, 'html')
-    Bundle 'tpope/vim-haml'
-    Bundle 'juvenn/mustache.vim'
-    Bundle 'tpope/vim-markdown'
-    Bundle 'digitaltoad/vim-jade'
-    Bundle 'slim-template/vim-slim'
-    Bundle 'tristen/vim-sparkup'
+"    call plug#begin()
+"    Plug 'tpope/vim-haml'
+"    Plug 'juvenn/mustache.vim'
+"    Plug 'tpope/vim-markdown'
+"    Plug 'digitaltoad/vim-jade'
+"    Plug 'slim-template/vim-slim'
+"    Plug 'tristen/vim-sparkup'
+"    call plug#end()
 
     au BufNewFile,BufReadPost *.jade setl shiftwidth=2 tabstop=2 softtabstop=2 expandtab
     au BufNewFile,BufReadPost *.html setl shiftwidth=2 tabstop=2 softtabstop=2 expandtab
@@ -236,18 +308,15 @@ if count(g:vimified_packages, 'html')
 endif
 " }}}
 
-" _. CSS {{{
-if count(g:vimified_packages, 'css')
-    Bundle 'wavded/vim-stylus'
-endif
-" }}}
-
 " _. JS {{{
 if count(g:vimified_packages, 'js')
-    Bundle 'kchmck/vim-coffee-script'
+"    call plug#begin()
+"    Plug 'kchmck/vim-coffee-script'
+"    Plug 'alfredodeza/jacinto.vim'
+"    call plug#end()
+
     au BufNewFile,BufReadPost *.coffee setl shiftwidth=2 tabstop=2 softtabstop=2 expandtab
 
-    Bundle 'alfredodeza/jacinto.vim'
     au BufNewFile,BufReadPost *.coffee setl foldmethod=indent nofoldenable
     au BufNewFile,BufReadPost *.coffee setl tabstop=2 softtabstop=2 shiftwidth=2 expandtab
 endif
@@ -255,23 +324,30 @@ endif
 
 " _. Clojure {{{
 if count(g:vimified_packages, 'clojure')
-    Bundle 'guns/vim-clojure-static'
-    Bundle 'tpope/vim-foreplay'
-    Bundle 'tpope/vim-classpath'
+"    call plug#begin()
+"    Plug 'guns/vim-clojure-static'
+"    Plug 'tpope/vim-foreplay'
+"    Plug 'tpope/vim-classpath'
+"    call plug#end()
 endif
 " }}}
 
 " _. Scala {{{
 if count(g:vimified_packages, 'scala')
-    Bundle 'derekwyatt/vim-scala'
+"    call plug#begin()
+"    Plug 'derekwyatt/vim-scala'
+"    call plug#end()
     au BufNewFile,BufReadPost *.scala setl shiftwidth=2 tabstop=2 softtabstop=2 expandtab
 endif
 " }}}
 
 " _. Haskell {{{
 if count(g:vimified_packages, 'haskell')
-    Bundle 'Twinside/vim-syntax-haskell-cabal'
-    Bundle 'lukerandall/haskellmode-vim'
+
+"    call plug#begin()
+"    Plug 'Twinside/vim-syntax-haskell-cabal'
+"    Plug 'lukerandall/haskellmode-vim'
+"    call plug#end()
 
     au BufEnter *.hs compiler ghc
 
@@ -282,11 +358,13 @@ endif
 
 " _. Color {{{
 if count(g:vimified_packages, 'color')
-    Bundle 'sjl/badwolf'
-    Bundle 'altercation/vim-colors-solarized'
-    Bundle 'tomasr/molokai'
-    Bundle 'zaiste/Atom'
-    Bundle 'w0ng/vim-hybrid'
+"    call plug#begin()
+"    Plug 'sjl/badwolf'
+"    Plug 'altercation/vim-colors-solarized'
+"    Plug 'tomasr/molokai'
+"    Plug 'zaiste/Atom'
+"    Plug 'w0ng/vim-hybrid'
+"    call plug#end()
 endif
 " }}}
 
@@ -656,7 +734,6 @@ map <leader>p :bp<cr>
 map <leader>q :wq!<cr>
 map <leader>h :hid<cr>
 map <leader>r :Redo<cr>
-map <leader>c :pclose<cr>
 
 " shortcuts to switch between buffers quickly
 :map <leader>0 :b0<cr>
@@ -720,14 +797,9 @@ endif
 " }}}
 
 " PYTHON STUFF {{{
-filetype off
-call pathogen#infect()
-call pathogen#helptags()
 
 filetype plugin indent on
 syntax on
-
-let g:go_fmt_command = "goimports"
 
 " python-mode settings
 let g:pymode_trim_whitespaces = 1
@@ -750,3 +822,6 @@ let g:pymode_trim_whitespaces = 120
 
 let g:slime_target = "tmux"
 let g:slime_paste_file = tempname()
+
+set nofoldenable
+set diffopt+=vertical

@@ -27,6 +27,7 @@ alias afind='ack-grep -il'
 alias reload!='. ~/.zshrc'
 alias u='cd $UBER_HOME/sync/umerazad.dev.uber.com/home/uber'
 alias ug='cd $GOPATH/src/code.uber.internal'
-alias sshu='boxer v umerazad-gold'
+alias dosa='cd $GOPATH/src/code.uber.internal/app_platform/dosa'
+alias sshu='boxer v umerazad'
 
 alias sshb='ssh umer@freebsd'
