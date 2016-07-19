@@ -1,0 +1,1 @@
+alias lynx="lynx -vikeys"
